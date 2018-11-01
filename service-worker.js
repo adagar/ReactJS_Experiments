@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ReactJS_Experiments/precache-manifest.618acc3c5c09f3d9efe638beb5f2b699.js"
+  "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/run/precache-manifest.c789fcba49b1a42f9fe430625d99eea2.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/ReactJS_Experiments/index.html", {
+workbox.routing.registerNavigationRoute("/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/run/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
