@@ -1,13 +1,13 @@
 {
-  "main.css": "/ReactJS_Experiments/ReactJS_Conway/static/css/main.08aff0b1.chunk.css",
-  "main.js": "/ReactJS_Experiments/ReactJS_Conway/static/js/main.b0f004c2.chunk.js",
-  "main.js.map": "/ReactJS_Experiments/ReactJS_Conway/static/js/main.b0f004c2.chunk.js.map",
-  "static/js/1.6eb6405c.chunk.js": "/ReactJS_Experiments/ReactJS_Conway/static/js/1.6eb6405c.chunk.js",
-  "static/js/1.6eb6405c.chunk.js.map": "/ReactJS_Experiments/ReactJS_Conway/static/js/1.6eb6405c.chunk.js.map",
-  "runtime~main.js": "/ReactJS_Experiments/ReactJS_Conway/static/js/runtime~main.85346706.js",
-  "runtime~main.js.map": "/ReactJS_Experiments/ReactJS_Conway/static/js/runtime~main.85346706.js.map",
-  "static/css/main.08aff0b1.chunk.css.map": "/ReactJS_Experiments/ReactJS_Conway/static/css/main.08aff0b1.chunk.css.map",
-  "index.html": "/ReactJS_Experiments/ReactJS_Conway/index.html",
-  "precache-manifest.0fce062207781d5de1d67c7aa4751e15.js": "/ReactJS_Experiments/ReactJS_Conway/precache-manifest.0fce062207781d5de1d67c7aa4751e15.js",
-  "service-worker.js": "/ReactJS_Experiments/ReactJS_Conway/service-worker.js"
+  "main.css": "/ReactJS_Experiments/static/css/main.08aff0b1.chunk.css",
+  "main.js": "/ReactJS_Experiments/static/js/main.3405ba3f.chunk.js",
+  "main.js.map": "/ReactJS_Experiments/static/js/main.3405ba3f.chunk.js.map",
+  "static/js/1.6eb6405c.chunk.js": "/ReactJS_Experiments/static/js/1.6eb6405c.chunk.js",
+  "static/js/1.6eb6405c.chunk.js.map": "/ReactJS_Experiments/static/js/1.6eb6405c.chunk.js.map",
+  "runtime~main.js": "/ReactJS_Experiments/static/js/runtime~main.80d86f90.js",
+  "runtime~main.js.map": "/ReactJS_Experiments/static/js/runtime~main.80d86f90.js.map",
+  "static/css/main.08aff0b1.chunk.css.map": "/ReactJS_Experiments/static/css/main.08aff0b1.chunk.css.map",
+  "index.html": "/ReactJS_Experiments/index.html",
+  "precache-manifest.618acc3c5c09f3d9efe638beb5f2b699.js": "/ReactJS_Experiments/precache-manifest.618acc3c5c09f3d9efe638beb5f2b699.js",
+  "service-worker.js": "/ReactJS_Experiments/service-worker.js"
 }
