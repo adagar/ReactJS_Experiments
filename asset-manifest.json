@@ -1,13 +1,13 @@
 {
-  "main.css": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/css/main.08aff0b1.chunk.css",
-  "main.js": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/js/main.96f10bb8.chunk.js",
-  "main.js.map": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/js/main.96f10bb8.chunk.js.map",
-  "static/js/1.6eb6405c.chunk.js": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/js/1.6eb6405c.chunk.js",
-  "static/js/1.6eb6405c.chunk.js.map": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/js/1.6eb6405c.chunk.js.map",
-  "runtime~main.js": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/js/runtime~main.b2a81607.js",
-  "runtime~main.js.map": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/js/runtime~main.b2a81607.js.map",
-  "static/css/main.08aff0b1.chunk.css.map": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/static/css/main.08aff0b1.chunk.css.map",
-  "index.html": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/index.html",
-  "precache-manifest.91f4b33cc58a2e4c0114684d7ca71d12.js": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/precache-manifest.91f4b33cc58a2e4c0114684d7ca71d12.js",
-  "service-worker.js": "/ReactJS_Experiments/ReactJS_Conway/react-gameoflife/service-worker.js"
+  "main.css": "/ReactJS_Experiments/ReactJS_Conway/static/css/main.08aff0b1.chunk.css",
+  "main.js": "/ReactJS_Experiments/ReactJS_Conway/static/js/main.b0f004c2.chunk.js",
+  "main.js.map": "/ReactJS_Experiments/ReactJS_Conway/static/js/main.b0f004c2.chunk.js.map",
+  "static/js/1.6eb6405c.chunk.js": "/ReactJS_Experiments/ReactJS_Conway/static/js/1.6eb6405c.chunk.js",
+  "static/js/1.6eb6405c.chunk.js.map": "/ReactJS_Experiments/ReactJS_Conway/static/js/1.6eb6405c.chunk.js.map",
+  "runtime~main.js": "/ReactJS_Experiments/ReactJS_Conway/static/js/runtime~main.85346706.js",
+  "runtime~main.js.map": "/ReactJS_Experiments/ReactJS_Conway/static/js/runtime~main.85346706.js.map",
+  "static/css/main.08aff0b1.chunk.css.map": "/ReactJS_Experiments/ReactJS_Conway/static/css/main.08aff0b1.chunk.css.map",
+  "index.html": "/ReactJS_Experiments/ReactJS_Conway/index.html",
+  "precache-manifest.0fce062207781d5de1d67c7aa4751e15.js": "/ReactJS_Experiments/ReactJS_Conway/precache-manifest.0fce062207781d5de1d67c7aa4751e15.js",
+  "service-worker.js": "/ReactJS_Experiments/ReactJS_Conway/service-worker.js"
 }
