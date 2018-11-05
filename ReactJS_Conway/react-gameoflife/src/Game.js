@@ -9,7 +9,6 @@ class Game extends React.Component {
     this.rows = Constants.HEIGHT / Constants.CELL_SIZE;
     this.cols = Constants.WIDTH / Constants.CELL_SIZE;
     this.board = this.makeEmptyBoard();
-    console.log(Constants.CELL_SIZE);
   }
 
   state = {
@@ -61,6 +60,13 @@ class Game extends React.Component {
 
     return neighbors;
   }
+
+  getTotal = (total, content, filter) => {
+    if (content === filter) {
+      total += 1;
+    }
+    return total;
+  };
 
   runIteration() {
     let newBoard = this.makeEmptyBoard();
@@ -136,31 +142,50 @@ class Game extends React.Component {
     const elemOffset = this.getElementOffset();
     const offsetX = event.clientX - elemOffset.x;
     const offsetY = event.clientY - elemOffset.y;
-    console.log(offsetX);
+
     const x = Math.floor(offsetX / Constants.CELL_SIZE);
     const y = Math.floor(offsetY / Constants.CELL_SIZE);
 
-    if (x > 0 && x < this.cols && y >= 0 && y <= this.rows) {
+    if (x >= 0 && x <= this.cols && y >= 0 && y <= this.rows) {
       console.log(x, y);
       this.board[y][x] = !this.board[y][x];
     }
 
     this.setState({ cells: this.makeCells() });
   };
+
+  randomize = event => {
+    for (let y = 0; y < this.rows; y++) {
+      for (let x = 0; x < this.cols; x++) {
+        this.board[y][x] =
+          Math.random() < 0.5 ? this.board[y][x] : !this.board[y][x];
+      }
+    }
+
+    this.setState({ cells: this.makeCells() });
+  };
+
   render() {
     const { cells, interval, isRunning } = this.state;
     return (
       <div>
-                <div className="Board"
-                    style={{ width: Constants.WIDTH, height: Constants.HEIGHT, backgroundSize: `${Constants.CELL_SIZE}px ${Constants.CELL_SIZE}px`}}
-                    onClick={this.handleClick}
-                    ref={(n) => { this.boardRef = n; }}>
+        <div
+          className="Board"
+          style={{
+            width: Constants.WIDTH,
+            height: Constants.HEIGHT,
+            backgroundSize: `${Constants.CELL_SIZE}px ${Constants.CELL_SIZE}px`
+          }}
+          onClick={this.handleClick}
+          ref={n => {
+            this.boardRef = n;
+          }}
+        >
+          {cells.map(cell => (
+            <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} />
+          ))}
+        </div>
 
-                    {cells.map(cell => (
-                        <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`}/>
-                    ))}
-                </div>
-        
         <div className="controls">
           Update every{" "}
           <input
@@ -177,6 +202,7 @@ class Game extends React.Component {
               Run
             </button>
           )}
+          <button onClick={this.randomize}>Randomize!</button>
         </div>
       </div>
     );
