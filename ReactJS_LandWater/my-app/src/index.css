@@ -21,9 +21,16 @@
 
 .end,
 .start {
+    background: green;
+}
+
+.controls {
+    text-align: center;
+}
+
+.fas {
     font-size: 36px;
     text-align: center;
     line-height: 100px;
     vertical-align: middle;
-    background: green;
 }
