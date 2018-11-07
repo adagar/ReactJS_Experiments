@@ -91,10 +91,17 @@ class Game extends React.Component {
   }
 
   makeTargetRatio = () => {
-    let workingSquares = this.cols * this.rows - 2;
-    let waterTarget = Math.floor(Math.random() * workingSquares);
-    let landTarget = workingSquares - waterTarget + 2;
-    console.log(waterTarget, landTarget);
+    let ratioOptions = [
+      [3, 1],
+      [1, 1],
+      [3, 2],
+      [2, 3],
+      [5, 3],
+      [3, 5]
+    ]
+    let selectedOption = ratioOptions[Math.floor(Math.random() * 6)];
+    let waterTarget = selectedOption[1];
+    let landTarget = selectedOption[0];
     return { waterTarget, landTarget };
   };
 
@@ -112,21 +119,35 @@ class Game extends React.Component {
     }
     return { waterTot, landTot };
   };
-
+  //takes four numbers, and confirms that they're matching ratios
+  compareRatio = () => {
+    if(
+      this.calculateRatio().landTot % this.targetRatio.landTarget === 0 && 
+      this.calculateRatio().waterTot % this.targetRatio.landTarget === 0 &&
+      (this.calculateRatio().waterTot / this.targetRatio.waterTarget) === (this.calculateRatio().landTot / this.targetRatio.landTarget)){
+        return true
+    }
+    else {
+      return false;
+    }
+  }
   //see if player won
   checkGameState = event => {
     this.connectionLookup = [];
     if (
-      this.targetRatio.landTarget === this.calculateRatio().landTot &&
-      this.targetRatio.waterTarget === this.calculateRatio().waterTot &&
+      this.compareRatio &&
       this.completeConnection(0, 0)
     ) {
       console.log("You win!");
+    }
+    else {
+      console.log("Sorry, try again");
     }
     this.setState({ squares: this.makeLevel() });
   };
 
   connectionLookup = [];
+  foundConnection = false;
 
   completeConnection(x, y) {
     const dirs = [[0, 1], [1, 0], [-1, 0], [0, -1]];
@@ -134,7 +155,7 @@ class Game extends React.Component {
       const dir = dirs[i];
       let y1 = y + dir[0];
       let x1 = x + dir[1];
-      if (!this.connectionLookup.includes(`${x1}, ${y1}`)) {
+      if (!this.connectionLookup.includes(`${x1}, ${y1}`) && !this.foundConnection) {
         if (
           x1 >= 0 &&
           x1 < this.cols &&
@@ -142,27 +163,19 @@ class Game extends React.Component {
           y1 < this.rows &&
           this.board[y1][x1].includes("land")
         ) {
-          console.log(
-            "checking for connection from",
-            x,
-            ",",
-            y,
-            this.board[y][x],
-            "to",
-            x1,
-            ",",
-            y1,
-            this.board[y1][x1]
-          );
-
           if (this.board[y1][x1].includes("end")) {
             console.log("Won!");
+            this.foundConnection = false;
             return true;
           } else {
             this.connectionLookup.push(`${x}, ${y}`);
             console.log(this.connectionLookup);
-            this.completeConnection(x1, y1);
-            this.board[y1][x1] = this.board[y1][x1] + " fas fa-circle";
+            if(this.completeConnection(x1, y1))
+            {
+              this.board[y1][x1] = this.board[y1][x1] + " fas fa-circle";
+              return true;
+            }
+            
           }
         }
       }
@@ -225,10 +238,9 @@ class Game extends React.Component {
               this.targetRatio.waterTarget}
           </div>
           <div className="ratio-status">
-            Current ratio:{" "}
-            {" " +
+            {"Land Tiles: " +
               this.calculateRatio().landTot +
-              " to " +
+              " to Water Tiles: " +
               this.calculateRatio().waterTot}
           </div>
           <button onClick={this.checkGameState}>Drive!</button>
