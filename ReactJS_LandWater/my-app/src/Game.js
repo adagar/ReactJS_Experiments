@@ -1,6 +1,7 @@
 import React from "react";
 import * as Constants from "./Constants";
 import Square from "./Square";
+import GameStatus from "./GameStatus";
 
 class Game extends React.Component {
   constructor() {
@@ -15,6 +16,7 @@ class Game extends React.Component {
   state = {
     squares: [],
     victory: false,
+    loss: false,
     targetRatio: {}
   };
 
@@ -121,9 +123,11 @@ class Game extends React.Component {
   };
   //takes four numbers, and confirms that they're matching ratios
   compareRatio = () => {
+    console.log(`Actual Ratio: ${this.calculateRatio().landTot} to ${this.calculateRatio().waterTot} 
+    Target Ratio: ${this.targetRatio.landTarget} to ${this.targetRatio.waterTarget}`);
     if(
-      this.calculateRatio().landTot % this.targetRatio.landTarget === 0 && 
-      this.calculateRatio().waterTot % this.targetRatio.landTarget === 0 &&
+      (this.calculateRatio().landTot % this.targetRatio.landTarget === 0 || this.targetRatio.landTarget % this.calculateRatio().landTot === 0)&& 
+      (this.calculateRatio().waterTot % this.targetRatio.waterTarget === 0 || this.targetRatio.waterTarget % this.calculateRatio().waterTot === 0)&&
       (this.calculateRatio().waterTot / this.targetRatio.waterTarget) === (this.calculateRatio().landTot / this.targetRatio.landTarget)){
         return true
     }
@@ -135,15 +139,16 @@ class Game extends React.Component {
   checkGameState = event => {
     this.connectionLookup = [];
     if (
-      this.compareRatio &&
+      this.compareRatio() &&
       this.completeConnection(0, 0)
     ) {
       console.log("You win!");
+      this.setState({ squares: this.makeLevel(), victory: true });
     }
-    else {
+    else if(this.completeConnection(0,0)){
       console.log("Sorry, try again");
+      this.setState({ squares: this.makeLevel(), loss: true });
     }
-    this.setState({ squares: this.makeLevel() });
   };
 
   connectionLookup = [];
@@ -206,6 +211,18 @@ class Game extends React.Component {
 
   render() {
     const { squares } = this.state;
+    let gameStatusWindow;
+
+    if(this.state.victory) {
+      console.log("rendering win window");
+      gameStatusWindow = <GameStatus status = "You won!"/>
+    } else if(this.state.loss) {
+      console.log("rending loss window");
+      gameStatusWindow = <GameStatus status = "You lost! Check your ratios and try again." />
+    } else {
+      gameStatusWindow = <div />
+    }
+
     return (
       <div>
         <div
@@ -227,7 +244,8 @@ class Game extends React.Component {
               key={`${square.x}, ${square.y}`}
               value={square.value}
             />
-          ))}
+          ))}          
+          {gameStatusWindow}
         </div>
         <div className="controls">
           <div className="ratio-goal">
