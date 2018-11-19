@@ -47,29 +47,41 @@ class Game extends React.Component {
         this.setState({ squares: board })
     }
 
+    RenderRow = props => {
+        console.log("My prop values: ", props);
+        return (
+            <div>
+            {props.map((square) => (
+                <Square
+                key = {square.coordinate}
+                color = {square.color}
+                coordinate = {square.coordinate}
+            />
+            ))}
+            </div>
+            
+        )
+    }
+
     render() {
         const { squares } = this.state;
+        console.log(squares);
         return (
+            <div>
             <div 
                 className = "Board"
                 style = {{
                     width: Constants.CELL_SIZE * 8,
                     height: Constants.CELL_SIZE * 8,
                 }}
-            {...squares.map(row => (
-                <div
-                className = {`${row}`}
-                /*
-                {row.map( square => (
-                    <Square
-                    coordinate = {square.coordinate}
-                    color = {square.color}
-                    />
-                ))}      
-                */
-               />          
-            ))}
+                />
             />
+            <div>
+            {squares.map((row,i) => (
+                <this.RenderRow row={row} key={i}/>
+            ))}
+            </div>  
+            </div>
         );
     }
 }
