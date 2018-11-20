@@ -51,7 +51,7 @@ class Game extends React.Component {
         console.log("My prop values: ", props);
         return (
             <div>
-            {props.map((square) => (
+            {props.row.map((square) => (
                 <Square
                 key = {square.coordinate}
                 color = {square.color}
