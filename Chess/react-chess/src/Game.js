@@ -1,6 +1,7 @@
 import React from 'react';
 import Square from "./Square";
 import * as Constants from "./Constants";
+import "./index.css";
 
 
 class Game extends React.Component {
@@ -22,6 +23,12 @@ class Game extends React.Component {
         let currColor = "white";
         for(let row = 0; row < 8; row++)
         {
+            if(row % 2 == 0){
+                currColor = "white";
+            }
+            else {
+                currColor = "black";
+            }
             let rowSquares = [];
             for(let column = 0; column < 8; column++)
             {
@@ -50,7 +57,7 @@ class Game extends React.Component {
     RenderRow = props => {
         console.log("My prop values: ", props);
         return (
-            <div>
+            <div className="row">
             {props.row.map((square) => (
                 <Square
                 key = {square.coordinate}
@@ -74,13 +81,13 @@ class Game extends React.Component {
                     width: Constants.CELL_SIZE * 8,
                     height: Constants.CELL_SIZE * 8,
                 }}
-                />
-            />
+            >
             <div>
             {squares.map((row,i) => (
                 <this.RenderRow row={row} key={i}/>
             ))}
-            </div>  
+            </div> 
+            </div> 
             </div>
         );
     }
