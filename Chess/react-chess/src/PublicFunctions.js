@@ -35,10 +35,12 @@ export const downLeftDiag = coord => {
 };
 
 export const getSrcToDestPath = (src, dest) => {
-  let alphaSrc = src[0];
-  let numSrc = src[1];
-  let alphaDest = dest[0];
-  let numDest = dest[1];
+  String.fromCharCode(coord.fromCharCodeAt(1) + 1);
+  let alphaSrc = src.fromCharCodeAt(0);
+  let numSrc = src.fromCharCodeAt(1);
+  let alphaDest = dest.fromCharCodeAt(0);
+  let numDest = dest.fromCharCodeAt(1);
+  let path = [];
 
   //use if/else to find cardinal direction
   //src is left of destination
@@ -46,29 +48,76 @@ export const getSrcToDestPath = (src, dest) => {
     //moving right
     if(numSrc < numDest) {
       //moving up and to right
-      return;
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc + i);
+        let thisNum = String.fromCharCode(numSrc + i);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
     } else if(numSrc > numDest) {
       //moving down and to the right
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc + i);
+        let thisNum = String.fromCharCode(numSrc - i);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
     } else {
       //moving right
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc);
+        let thisNum = String.fromCharCode(numSrc + i);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
+      return;
     }
   } else if( alphaSrc > alphaDest) {
     //moving left
     if(numSrc < numDest) {
       //moving up and to left
-      return;
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc - i);
+        let thisNum = String.fromCharCode(numSrc + i);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
     } else if(numSrc > numDest) {
       //moving down and to the left
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc - i);
+        let thisNum = String.fromCharCode(numSrc - i);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
     } else {
       //moving left
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc - i);
+        let thisNum = String.fromCharCode(numSrc);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
     }
   } else {
     //no alpha movement
     if(numSrc < numDest) {
       //moving up
-      return;
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc);
+        let thisNum = String.fromCharCode(numSrc + i);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
     } else if(numSrc > numDest) {
       //moving down
+      for(let i = 0; i < numDest - numSrc; i++){
+        let thisAlpha = String.fromCharCode(alphaSrc);
+        let thisNum = String.fromCharCode(numSrc - i);
+        let newCoord = thisAlpha + thisNum;
+        path.push(newCoord);
+      }
     }
   }
+  return path;
 }
