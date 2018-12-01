@@ -35,7 +35,6 @@ export const downLeftDiag = coord => {
 };
 
 export const getSrcToDestPath = (src, dest) => {
-  String.fromCharCode(coord.fromCharCodeAt(1) + 1);
   let alphaSrc = src.fromCharCodeAt(0);
   let numSrc = src.fromCharCodeAt(1);
   let alphaDest = dest.fromCharCodeAt(0);
@@ -44,19 +43,19 @@ export const getSrcToDestPath = (src, dest) => {
 
   //use if/else to find cardinal direction
   //src is left of destination
-  if(alphaSrc < alphaDest) {
+  if (alphaSrc < alphaDest) {
     //moving right
-    if(numSrc < numDest) {
+    if (numSrc < numDest) {
       //moving up and to right
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc + i);
         let thisNum = String.fromCharCode(numSrc + i);
         let newCoord = thisAlpha + thisNum;
         path.push(newCoord);
       }
-    } else if(numSrc > numDest) {
+    } else if (numSrc > numDest) {
       //moving down and to the right
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc + i);
         let thisNum = String.fromCharCode(numSrc - i);
         let newCoord = thisAlpha + thisNum;
@@ -64,7 +63,7 @@ export const getSrcToDestPath = (src, dest) => {
       }
     } else {
       //moving right
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc);
         let thisNum = String.fromCharCode(numSrc + i);
         let newCoord = thisAlpha + thisNum;
@@ -72,19 +71,19 @@ export const getSrcToDestPath = (src, dest) => {
       }
       return;
     }
-  } else if( alphaSrc > alphaDest) {
+  } else if (alphaSrc > alphaDest) {
     //moving left
-    if(numSrc < numDest) {
+    if (numSrc < numDest) {
       //moving up and to left
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc - i);
         let thisNum = String.fromCharCode(numSrc + i);
         let newCoord = thisAlpha + thisNum;
         path.push(newCoord);
       }
-    } else if(numSrc > numDest) {
+    } else if (numSrc > numDest) {
       //moving down and to the left
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc - i);
         let thisNum = String.fromCharCode(numSrc - i);
         let newCoord = thisAlpha + thisNum;
@@ -92,7 +91,7 @@ export const getSrcToDestPath = (src, dest) => {
       }
     } else {
       //moving left
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc - i);
         let thisNum = String.fromCharCode(numSrc);
         let newCoord = thisAlpha + thisNum;
@@ -101,17 +100,17 @@ export const getSrcToDestPath = (src, dest) => {
     }
   } else {
     //no alpha movement
-    if(numSrc < numDest) {
+    if (numSrc < numDest) {
       //moving up
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc);
         let thisNum = String.fromCharCode(numSrc + i);
         let newCoord = thisAlpha + thisNum;
         path.push(newCoord);
       }
-    } else if(numSrc > numDest) {
+    } else if (numSrc > numDest) {
       //moving down
-      for(let i = 0; i < numDest - numSrc; i++){
+      for (let i = 0; i < numDest - numSrc; i++) {
         let thisAlpha = String.fromCharCode(alphaSrc);
         let thisNum = String.fromCharCode(numSrc - i);
         let newCoord = thisAlpha + thisNum;
@@ -120,4 +119,4 @@ export const getSrcToDestPath = (src, dest) => {
     }
   }
   return path;
-}
+};
