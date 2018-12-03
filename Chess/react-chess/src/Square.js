@@ -3,8 +3,7 @@ import * as Constants from "./Constants";
 
 class Square extends React.Component {
   render() {
-    const { color, coordinate, piece } = this.props;
-    console.log(`${50 * (coordinate.charCodeAt(0) - 97)}`);
+    const { color, coordinate, piece, onClick } = this.props;
     return (
       <div
         className={"Square"}
@@ -14,6 +13,7 @@ class Square extends React.Component {
           top: `${Constants.CELL_SIZE * coordinate[1]}px`,
           backgroundImage: `${piece}`
         }}
+        onClick = {onClick}
       >
         {coordinate}
       </div>

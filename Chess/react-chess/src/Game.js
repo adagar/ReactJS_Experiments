@@ -19,9 +19,13 @@ class Game extends React.Component {
 
   initGamePieces = () => {
     const { squares } = this.state;
-    console.log(squares);
     return squares;
   };
+
+  handleClick = evt => {
+    console.log(evt.target);
+    evt.target.style = {...evt.target.state, backgroundColor: "RGB(111,143,114)"}; 
+  }
 
   makeGameBoard = event => {
     console.log("Generating board");
@@ -69,6 +73,7 @@ class Game extends React.Component {
             color={square.color}
             coordinate={square.coordinate}
             piece={square.piece ? square.piece.style.backgroundImage : null}
+            onClick = {this.handleClick}
           />
         ))}
       </div>
