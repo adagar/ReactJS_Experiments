@@ -1,20 +1,20 @@
 export const upRow = coord => {
-  let newCoordAlpha = String.fromCharCode(coord.fromCharCodeAt(1) + 1);
+  let newCoordAlpha = String.fromCharCode(coord.charCodeAt(1) + 1);
   return coord[0] + newCoordAlpha;
 };
 
 export const downRow = coord => {
-  let newCoordAlpha = String.fromCharCode(coord.fromCharCodeAt(1) - 1);
+  let newCoordAlpha = String.fromCharCode(coord.charCodeAt(1) - 1);
   return coord[0] + newCoordAlpha;
 };
 
 export const leftCol = coord => {
-  let newCoordAlpha = String.fromCharCode(coord.fromCharCodeAt(0) - 1);
+  let newCoordAlpha = String.fromCharCode(coord.charCodeAt(0) - 1);
   return newCoordAlpha + coord[1];
 };
 
 export const rightCol = coord => {
-  let newCoordAlpha = String.fromCharCode(coord.fromCharCodeAt(1) + 1);
+  let newCoordAlpha = String.fromCharCode(coord.charCodeAt(1) + 1);
   return newCoordAlpha + coord[1];
 };
 
@@ -35,10 +35,10 @@ export const downLeftDiag = coord => {
 };
 
 export const getSrcToDestPath = (src, dest) => {
-  let alphaSrc = src.fromCharCodeAt(0);
-  let numSrc = src.fromCharCodeAt(1);
-  let alphaDest = dest.fromCharCodeAt(0);
-  let numDest = dest.fromCharCodeAt(1);
+  let alphaSrc = src.charCodeAt(0);
+  let numSrc = src.charCodeAt(1);
+  let alphaDest = dest.charCodeAt(0);
+  let numDest = dest.charCodeAt(1);
   let path = [];
 
   //use if/else to find cardinal direction

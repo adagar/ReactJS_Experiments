@@ -18,7 +18,7 @@ div.Board {
   background-color: #000;
 }
 
-div.Square {
+.Square {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -27,4 +27,16 @@ div.Square {
 div.row {
   width: 400px;
   height: 50px;
+}
+
+.Square.black {
+  background-color: gray;
+}
+
+.Square.white {
+  background-color: white;
+}
+
+.Square.selected {
+  background-color: orange;
 }

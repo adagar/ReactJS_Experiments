@@ -22,9 +22,22 @@ class Game extends React.Component {
     return squares;
   };
 
-  handleClick = evt => {
-    console.log(evt.target);
-    evt.target.style = {...evt.target.state, backgroundColor: "RGB(111,143,114)"}; 
+  handleClick = (coordinate) => {
+    console.log(coordinate);
+    
+    const squares = this.state.squares.slice();
+    //reset all squares
+    for(let i = 0; i < squares.length; i++){
+      let thisRow = squares[i];
+      for(let j = 0; j < thisRow.length; j++){
+        squares[i][j].selected = false;
+      }
+    }
+
+    const column =  coordinate.charCodeAt(0) - 97;
+    const row =  coordinate.charCodeAt(1) - 48;
+    squares[row][column].selected = true;
+    this.setState({squares: squares});
   }
 
   makeGameBoard = event => {
@@ -45,7 +58,8 @@ class Game extends React.Component {
 
         let square = {
           coordinate: coordinateStr,
-          color: currColor
+          color: currColor,
+          selected: false
         };
         rowSquares.push(square);
 
@@ -73,6 +87,7 @@ class Game extends React.Component {
             color={square.color}
             coordinate={square.coordinate}
             piece={square.piece ? square.piece.style.backgroundImage : null}
+            selected = {square.selected}
             onClick = {this.handleClick}
           />
         ))}
