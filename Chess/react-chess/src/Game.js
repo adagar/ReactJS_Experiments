@@ -1,7 +1,14 @@
 import React from "react";
 import Square from "./Square";
 import * as Constants from "./Constants";
-import Queen from "./Queen";
+
+import Pawn from "./Pieces/Pawn";
+import Knight from "./Pieces/Knight";
+import Bishop from "./Pieces/Bishop";
+import Rook from "./Pieces/Rook";
+import Queen from "./Pieces/Queen";
+import King from "./Pieces/King";
+
 import "./index.css";
 
 class Game extends React.Component {
@@ -73,7 +80,42 @@ class Game extends React.Component {
       board.push(rowSquares);
     }
 
-    board[0][0].piece = new Queen(1);
+    //player 1 pieces
+    board[6][0].piece = new Pawn(1);
+    board[6][1].piece = new Pawn(1);
+    board[6][2].piece = new Pawn(1);
+    board[6][3].piece = new Pawn(1);
+    board[6][4].piece = new Pawn(1);
+    board[6][5].piece = new Pawn(1);
+    board[6][6].piece = new Pawn(1);
+    board[6][7].piece = new Pawn(1);
+    board[7][0].piece = new Rook(1);
+    board[7][1].piece = new Knight(1);
+    board[7][2].piece = new Bishop(1);
+    board[7][3].piece = new Queen(1);
+    board[7][4].piece = new King(1);
+    board[7][5].piece = new Bishop(1);
+    board[7][6].piece = new Knight(1);
+    board[7][7].piece = new Rook(1);
+
+    //player 2 pieces
+    board[1][0].piece = new Pawn(2);
+    board[1][1].piece = new Pawn(2);
+    board[1][2].piece = new Pawn(2);
+    board[1][3].piece = new Pawn(2);
+    board[1][4].piece = new Pawn(2);
+    board[1][5].piece = new Pawn(2);
+    board[1][6].piece = new Pawn(2);
+    board[1][7].piece = new Pawn(2);
+    board[0][0].piece = new Rook(2);
+    board[0][1].piece = new Knight(2);
+    board[0][2].piece = new Bishop(2);
+    board[0][3].piece = new Queen(2);
+    board[0][4].piece = new King(2);
+    board[0][5].piece = new Bishop(2);
+    board[0][6].piece = new Knight(2);
+    board[0][7].piece = new Rook(2);
+
     this.setState({ squares: board });
   };
 

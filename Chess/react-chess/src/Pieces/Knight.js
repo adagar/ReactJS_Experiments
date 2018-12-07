@@ -1,5 +1,5 @@
 import Piece from "./Piece.js";
-import * as ChessFunc from "./PublicFunctions";
+import * as ChessFunc from "../PublicFunctions";
 
 export default class Rook extends Piece {
   constructor(player) {
