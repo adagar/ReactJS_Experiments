@@ -14,6 +14,10 @@ import "./index.css";
 class Game extends React.Component {
   constructor() {
     super();
+    this.state = {
+      squares: [],
+      selection: null
+    };
   }
 
   componentDidMount() {
@@ -21,7 +25,8 @@ class Game extends React.Component {
   }
 
   state = {
-    squares: []
+    squares: [],
+    selection: null
   };
 
   initGamePieces = () => {
@@ -29,8 +34,7 @@ class Game extends React.Component {
     return squares;
   };
 
-  handleClick = (coordinate) => {
-    console.log(coordinate);
+  handleClick = (coordinate) => {   
     
     const squares = this.state.squares.slice();
     //reset all squares
@@ -43,12 +47,30 @@ class Game extends React.Component {
 
     const column =  coordinate.charCodeAt(0) - 97;
     const row =  coordinate.charCodeAt(1) - 48;
-    squares[row][column].selected = true;
+    const clickedSquare = squares[row][column];
+    
+    //handle color change
+    clickedSquare.selected = true;
     this.setState({squares: squares});
+
+    //handle movement
+    if(clickedSquare.piece){
+      this.setState({selection: clickedSquare});
+    } else if(this.state.selection) {
+      clickedSquare.piece = this.state.selection.piece;
+
+      //remove piece from previous
+      const selectColumn =  this.state.selection.coordinate.charCodeAt(0) - 97;
+      const selectRow =  this.state.selection.coordinate.charCodeAt(1) - 48;
+      squares[selectRow][selectColumn].piece = null;
+
+      this.setState({squares: squares, selection: null});
+    } else {
+      this.setState({selection: null});
+    }
   }
 
   makeGameBoard = event => {
-    console.log("Generating board");
     let board = [];
     let currColor = "white";
     for (let row = 0; row < 8; row++) {
@@ -66,7 +88,8 @@ class Game extends React.Component {
         let square = {
           coordinate: coordinateStr,
           color: currColor,
-          selected: false
+          selected: false,
+          piece: null
         };
         rowSquares.push(square);
 
@@ -120,7 +143,6 @@ class Game extends React.Component {
   };
 
   RenderRow = props => {
-    console.log("My prop values: ", props);
     return (
       <div className="row">
         {props.row.map(square => (
@@ -139,7 +161,6 @@ class Game extends React.Component {
 
   render() {
     const { squares } = this.state;
-    console.log(squares);
     return (
       <div>
         <div

@@ -20,6 +20,7 @@ div.Board {
 
 .Square {
   position: absolute;
+  display: inline-block;
   width: 50px;
   height: 50px;
 }
@@ -39,4 +40,8 @@ div.row {
 
 .Square.selected {
   background-color: orange;
+}
+
+div.Square {
+  background-image: none;
 }
