@@ -9,8 +9,9 @@ export default class Pawn extends Piece {
         ? "https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg" 
         : "https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg"
     );
+  }
 
-    const isMovePossible = (src, dest) => {
+    isMovePossible = (src, dest) => {
       let deltaRow = src.charCodeAt(1) - dest.charCodeAt(1);
       let deltaCol = src.charCodeAt(0) - dest.charCodeAt(0);
 
@@ -21,8 +22,7 @@ export default class Pawn extends Piece {
       );
     };
 
-    const getSrcToDestPath = (src, dest) => {
+    getSrcToDestPath = (src, dest) => {
       return null;
     };
   }
-}
