@@ -13,10 +13,32 @@
     <div id="app"></div>
     <script type="text/babel">
         class App extends React.Component {
+            state = {
+                name: 'Fart king',
+                age: 30
+            }
+
+            handleClick = (e) => {
+                console.log(this.state);
+            }
+
+            handleMouseOver = (e) => {
+                console.log(e.pageX);
+            }
+
+            handleCopy = e => {
+                console.log("Don't copy me bro.");
+            }
+
             render(){
                 return(
                     <div>
                         <h1>Hello, world!</h1>
+                        <p>{ Math.random() * 10 }</p>
+                        <p>{ this.state.name }</p>
+                        <button onClick={ this.handleClick }>Click me!</button>
+                        <button onMouseOver={ this.handleMouseOver }>Hover over me!</button>
+                        <p onCopy = { this.handleCopy }>What we think, we become</p>
                     </div>
                 )
             }
