@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
     <title>CDN Example</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app"></div>
     <script type="text/babel">
-        class App extends React.Component {
+      class App extends React.Component {
+        state = {
+          name: "Fart king",
+          age: 30
+        };
 
-            state = {
-                name: 'Fart king',
-                age: 30
-            }
+        handleChange = e => {
+          this.setState({
+            name: e.target.value
+          });
+        };
 
-            handleChange = e => {
-                this.setState({
-                    name: e.target.value
-                })
-            }
+        handleSubmit = e => {
+          e.preventDefault();
+          console.log("form submitted", this.state.name);
+        };
 
-            handleSubmit = e => {
-                e.preventDefault();
-                console.log('form submitted', this.state.name)
-            }
-
-            render(){
-                return(
-                    <div>
-                        <h1>My name is { this.state.name }</h1>
-                        <form onSubmit = { this.handleSubmit }>
-                            <input type="text" onChange = { this.handleChange }/>
-                            <button>Submit</button>
-                        </form>
-                    </div>
-                )
-            }
+        render() {
+          return (
+            <div>
+              <h1>My name is {this.state.name}</h1>
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" onChange={this.handleChange} />
+                <button>Submit</button>
+              </form>
+            </div>
+          );
         }
-        ReactDOM.render(<App />, document.getElementById('app'));
+      }
+      ReactDOM.render(<App />, document.getElementById("app"));
     </script>
-</body>
-
+  </body>
 </html>
