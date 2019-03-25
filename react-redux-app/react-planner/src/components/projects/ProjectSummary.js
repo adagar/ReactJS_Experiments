@@ -1,5 +1,5 @@
 import React from "react";
-import moment from "moment";
+import * as moment from "moment";
 
 const ProjectSummary = ({ project }) => {
   console.log(project);
