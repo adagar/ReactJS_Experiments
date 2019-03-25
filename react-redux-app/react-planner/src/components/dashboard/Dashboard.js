@@ -30,7 +30,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     projects: state.firestore.ordered.projects, //accessing this from the root reducer, which has a project. That project has the 'projects' property
     auth: state.firebase.auth

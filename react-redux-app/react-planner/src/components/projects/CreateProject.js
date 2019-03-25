@@ -9,14 +9,13 @@ class CreateProject extends Component {
     content: ""
   };
 
-  handleChange = e => {
-    console.log(e);
+  handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     //console.log(this.state);
@@ -58,13 +57,13 @@ class CreateProject extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    createProject: project => dispatch(createProject(project))
+    createProject: (project) => dispatch(createProject(project))
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth
   };
