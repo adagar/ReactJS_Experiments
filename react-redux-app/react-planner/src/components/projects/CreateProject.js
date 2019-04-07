@@ -6,16 +6,20 @@ import { Redirect } from "react-router-dom";
 class CreateProject extends Component {
   state = {
     title: "",
-    content: ""
+    content: "",
+    tasks: [
+      { task: "task1", complete: false, id: 0 },
+      { task: "task2", complete: false, id: 1 }
+    ]
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     //console.log(this.state);
@@ -57,13 +61,13 @@ class CreateProject extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    createProject: (project) => dispatch(createProject(project))
+    createProject: project => dispatch(createProject(project))
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     auth: state.firebase.auth
   };

@@ -45,3 +45,21 @@ input[type=email]:not(.browser-default):focus:not([readonly])+label,
 input[type=password]:not(.browser-default):focus:not([readonly])+label {
   color: #ec407a !important;
 }
+
+.completedTask {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.pendingTask {
+  color: black;
+}
+
+.task-check {
+  float: right;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: checkbox;
+  float: right;
+}

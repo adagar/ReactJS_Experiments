@@ -27,3 +27,59 @@ export const createProject = project => {
       });
   };
 };
+
+export const completeTask = (projectId, task) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore();
+    const project = firestore.collection("projects").doc(`${projectId}`);
+    project
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          const tasks = doc.data().tasks;
+          tasks[task]["complete"] = true;
+          project
+            .update({
+              tasks: tasks
+            })
+            .then(() => {
+              console.log("Task update!");
+            });
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+  };
+};
+
+export const uncompleteTask = (projectId, task) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    // make async call to database
+    const firestore = getFirestore();
+    const project = firestore.collection("projects").doc(`${projectId}`);
+    project
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          const tasks = doc.data().tasks;
+          tasks[task]["complete"] = false;
+          project
+            .update({
+              tasks: tasks
+            })
+            .then(() => {
+              console.log("Task update!");
+            });
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+  };
+};
