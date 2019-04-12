@@ -1,4 +1,4 @@
-export const createProject = project => {
+export const createProject = (project) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
@@ -19,11 +19,29 @@ export const createProject = project => {
           project
         });
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch({
           type: "CREATE_PROJECT_ERROR",
           err
         });
+      });
+  };
+};
+
+export const deleteProject = (projectId) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+    firestore
+      .collection("projects")
+      .doc(`${projectId}`)
+      .delete()
+      .then(() => {
+        console.log("Project deleted");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
       });
   };
 };
@@ -35,7 +53,7 @@ export const completeTask = (projectId, task) => {
     const project = firestore.collection("projects").doc(`${projectId}`);
     project
       .get()
-      .then(doc => {
+      .then((doc) => {
         if (doc.exists) {
           const tasks = doc.data().tasks;
           tasks[task]["complete"] = true;
@@ -63,7 +81,7 @@ export const uncompleteTask = (projectId, task) => {
     const project = firestore.collection("projects").doc(`${projectId}`);
     project
       .get()
-      .then(doc => {
+      .then((doc) => {
         if (doc.exists) {
           const tasks = doc.data().tasks;
           tasks[task]["complete"] = false;

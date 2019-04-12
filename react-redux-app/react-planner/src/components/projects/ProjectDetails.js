@@ -5,19 +5,31 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import {
   completeTask,
-  uncompleteTask
+  uncompleteTask,
+  deleteProject
 } from "../../store/actions/projectActions";
 import TodoList from "./TodoList";
 import * as moment from "moment";
 
 class ProjectDetails extends Component {
-  handleComplete = id => {
+  handleComplete = (id) => {
     console.log(this.props.id, id);
     this.props.completeTask(this.props.id, id);
   };
-  handleUncomplete = id => {
+  handleUncomplete = (id) => {
     console.log(this.props.id, id);
     this.props.uncompleteTask(this.props.id, id);
+  };
+  handleMouseEnter = (e) => {
+    e.target.className =
+      "card-action red lighten-3 red-text delete-button text-darken-2 pulse";
+  };
+  handleMouseLeave = (e) => {
+    e.target.className = "card-action red lighten-3 grey-text delete-button";
+  };
+  handleDelete = (e) => {
+    this.props.deleteProject(this.props.id);
+    this.props.history.push("/");
   };
   render() {
     const { auth, project } = this.props;
@@ -45,6 +57,14 @@ class ProjectDetails extends Component {
               </div>
               <div>{moment(project.createdAt.toDate()).calendar()}</div>
             </div>
+            <div
+              className="card-action red lighten-3 grey-text delete-button"
+              onMouseOver={this.handleMouseEnter}
+              onMouseLeave={this.handleMouseLeave}
+              onClick={this.handleDelete}
+            >
+              DELETE
+            </div>
           </div>
         </div>
       );
@@ -65,10 +85,11 @@ const mapStateToProps = (state, ownProps) => {
   return { project: project, auth: state.firebase.auth, id: id };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     completeTask: (project, task) => dispatch(completeTask(project, task)),
-    uncompleteTask: (project, task) => dispatch(uncompleteTask(project, task))
+    uncompleteTask: (project, task) => dispatch(uncompleteTask(project, task)),
+    deleteProject: (project) => dispatch(deleteProject(project))
   };
 };
 
