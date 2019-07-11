@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://www.adagar.net/experiments/ratios_land/", 
+  "homepage": "https://a-nick-garza.com/landwater/",
   "dependencies": {
     "nodemon": "^1.18.5",
     "react": "^16.6.0",
